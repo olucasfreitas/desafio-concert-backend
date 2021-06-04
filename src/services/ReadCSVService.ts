@@ -5,7 +5,7 @@ import { getRepository } from 'typeorm';
 import Measurement from '../models/Measurement';
 
 class ReadCSVService {
-  public async execute(): Promise<Measurement[]> {
+  public async execute(): Promise<void> {
     const measurementsRepository = getRepository(Measurement);
 
     fs.createReadStream(
@@ -25,9 +25,9 @@ class ReadCSVService {
         await measurementsRepository.save(measurement);
       });
 
-    const measurements = await measurementsRepository.find();
+    // const measurements = await measurementsRepository.find();
 
-    return measurements;
+    // return measurements;
   }
 }
 
