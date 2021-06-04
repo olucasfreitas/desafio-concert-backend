@@ -5,6 +5,7 @@ import { getRepository } from 'typeorm';
 import Measurement from '../models/Measurement';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import ReadCSVService from '../services/ReadCSVService';
+import DeleteOldDataService from '../services/DeleteOldDataService';
 
 const measurementsRouter = Router();
 
@@ -23,5 +24,15 @@ measurementsRouter.post('/', ensureAuthenticated, async (request, response) => {
 
   return response.json(finalCSV);
 });
+
+measurementsRouter.delete(
+  '/',
+  ensureAuthenticated,
+  async (request, response) => {
+    const deletedData = new DeleteOldDataService();
+
+    return response.status(201).json(deletedData.execute());
+  },
+);
 
 export default measurementsRouter;
