@@ -1,0 +1,8 @@
+{
+  "name": "desafio-concert",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/olucasfreitas/desafio-concert.git",
+  "author": "Lucas Freitas <lucasdasilvafreitas090@gmail.com>",
+  "license": "MIT"
+}
