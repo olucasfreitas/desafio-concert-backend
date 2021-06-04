@@ -8,11 +8,14 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master",
+    "start": "node ./dist/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "date-fns": "^2.22.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "fast-csv": "^4.3.6",
@@ -40,5 +43,8 @@
     "prettier": "^2.3.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.2"
+  },
+  "engines": {
+    "node": "14.17.0"
   }
 }
