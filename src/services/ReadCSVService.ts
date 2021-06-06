@@ -24,10 +24,6 @@ class ReadCSVService {
 
         await measurementsRepository.save(measurement);
       });
-
-    // const measurements = await measurementsRepository.find();
-
-    // return measurements;
   }
 }
 

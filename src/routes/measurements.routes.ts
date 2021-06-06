@@ -16,10 +16,15 @@ measurementsRouter.get('/', ensureAuthenticated, async (request, response) => {
 
 measurementsRouter.post('/', ensureAuthenticated, async (request, response) => {
   const readCSV = new ReadCSVService();
+  const measurementsRepository = getRepository(Measurement);
 
-  const finalCSV = await readCSV.execute();
+  await measurementsRepository.query(`DELETE FROM measurements`);
 
-  return response.json(finalCSV);
+  await readCSV.execute();
+
+  const measurements = await measurementsRepository.find();
+
+  return response.json(measurements);
 });
 
 export default measurementsRouter;
